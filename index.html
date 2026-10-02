@@ -54,9 +54,9 @@ h1 span{color:var(--rose);display:inline-block;animation:beat 1.2s infinite}
 .throne{max-width:none;background:radial-gradient(circle at 50% 0,#fff3cf,transparent 55%),#f9efe0}
 .king{position:relative;width:210px;margin:20px auto 10px}
 .king .stk{width:210px;height:210px}
-.crown{position:absolute;width:120px;left:45px;top:-120px;opacity:0;transition:1.1s cubic-bezier(.3,1.5,.5,1)}
-.king.crowned .crown{top:-14px;opacity:1}
-.king.crowned .stk{animation:bob 2s infinite}
+.crown{position:absolute;width:100px;height:70px;left:55px;top:-170px;opacity:0;transition:1.1s cubic-bezier(.3,1.4,.5,1);z-index:2;transform:rotate(-6deg)}
+.king.crowned .crown{top:-24px;opacity:1}
+.king.crowned{animation:bob 2s infinite}
 #kingMsg{display:none;font-family:"Playfair Display",serif;font-size:1.5rem;color:var(--green);margin-top:18px}
 .future{max-width:none;background:linear-gradient(145deg,#334a3f,#24352e);color:#fff}
 .future h2{color:#fff}.future .eyebrow{color:#c8d4c4}
