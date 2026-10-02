@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For my King 👑</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+:root{--green:#31483d;--cream:#f7f3e9;--paper:#fffdf8;--ink:#26342e;--muted:#69746e;--rose:#d98f9a;--gold:#e7b84a}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:"DM Sans",sans-serif;line-height:1.7;overflow-x:hidden}
+h1,h2,h3{font-family:"Playfair Display",serif;font-weight:600;line-height:1.1}
+button{font:inherit;cursor:pointer}
+.script{font-family:"Caveat",cursive;font-size:1.6rem;color:var(--rose)}
+.eyebrow{text-transform:uppercase;letter-spacing:.22em;font-size:.72rem;color:#708074;margin:0 0 16px}
+.hero{min-height:100vh;background:radial-gradient(circle at 20% 20%,#f6d9dc,transparent 35%),radial-gradient(circle at 85% 80%,#dce5d7,transparent 40%),linear-gradient(135deg,#fbeee8,#f8eee8 70%,#eee4d6);display:flex;align-items:center;justify-content:center;text-align:center;padding:30px;position:relative;overflow:hidden}
+h1{font-size:clamp(3.6rem,12vw,8rem);margin:0;color:var(--green);letter-spacing:-.04em}
+h1 span{color:var(--rose);display:inline-block;animation:beat 1.2s infinite}
+.hero p.t{max-width:520px;margin:18px auto 26px;color:#58645d;font-size:1.1rem;min-height:3.4em}
+.btn{border:0;background:var(--green);color:#fff;padding:14px 28px;border-radius:40px;box-shadow:0 10px 25px #31483d22;transition:.25s}
+.btn:hover{transform:translateY(-3px) scale(1.04)}
+.pulse{animation:pulse 2s infinite}
+.stk{width:110px;height:110px;display:block}
+.pair{display:flex;justify-content:center;gap:6px;margin-bottom:10px}
+.pair .stk:nth-child(1){animation:bob 2.4s ease-in-out infinite}
+.pair .stk:nth-child(2){animation:bob 2.4s ease-in-out .5s infinite}
+.section{padding:100px 7vw;max-width:1100px;margin:auto;text-align:center;position:relative}
+.section h2{font-size:clamp(2.2rem,5vw,3.8rem);margin:0 0 22px;color:var(--green)}
+.rv{opacity:0;transform:translateY(40px);transition:1s}
+.rv.in{opacity:1;transform:none}
+.letter{background:var(--paper);padding:50px clamp(24px,7vw,80px);border:1px solid #e9dcd5;box-shadow:0 20px 60px #b9868622;font-family:"Playfair Display",serif;font-size:1.15rem;text-align:left;max-width:800px;margin:auto;position:relative}
+.letter .corner{position:absolute;width:70px;right:-14px;top:-30px;transform:rotate(12deg);animation:bob 3s infinite}
+.sign{text-align:right;color:var(--rose);font-size:1.6rem}
+.band{background:#fbe9e6;max-width:none}
+.grid{max-width:1000px;margin:30px auto 0; align-items:start; display:grid;grid-template-columns:repeat(2,1fr);gap:24px;text-align:left}
+.card{background:#fffaf5;padding:16px 16px 24px;box-shadow:0 12px 30px #b9868618;transition:.3s;position:relative}
+.card:hover{transform:translateY(-6px) rotate(-1.5deg)}
+.card .stk{position:absolute;width:64px;height:64px;right:-10px;top:-22px;animation:bob 2.6s infinite}
+.photo{background:linear-gradient(135deg,#f4d9d9,#dfe8da);display:flex;align-items:center;justify-content:center;color:#8a7f7f;letter-spacing:.18em;font-size:.7rem;margin-bottom:16px;overflow:hidden}
+.photo:not(:has(img)){height:240px}
+.photo img{width:100%;height:auto;display:block}
+.card h3{font-size:1.35rem;margin:6px 0}
+.card p{margin:0;color:#7a6f6f}
+.reason{border:1px solid #ecd6d2;background:#fffaf5;text-align:left;padding:24px;border-radius:14px;min-height:120px;transition:.25s}
+.reason:hover{transform:scale(1.03)}
+.reason b{display:block;font-family:"Playfair Display",serif;font-size:1.25rem}
+.reason em{display:block;font-style:normal;color:#8a6f73;max-height:0;overflow:hidden;opacity:0;transition:.4s}
+.reason.open{background:#fbe3e3}.reason.open em{max-height:80px;opacity:1;margin-top:8px}
+.q-box{background:#fff;border:2px dashed #ecc4c8;border-radius:24px;max-width:560px;margin:auto;padding:30px 24px;position:relative;min-height:340px}
+.q-box .btns{display:flex;gap:16px;justify-content:center;margin-top:22px}
+#no{background:#fff;color:var(--green);border:1px solid var(--green)}
+#yesMsg{display:none;margin-top:18px;color:var(--rose);font-family:"Playfair Display",serif;font-size:1.3rem}
+.throne{max-width:none;background:radial-gradient(circle at 50% 0,#fff3cf,transparent 55%),#f9efe0}
+.king{position:relative;width:210px;margin:20px auto 10px}
+.king .stk{width:210px;height:210px}
+.crown{position:absolute;width:120px;left:45px;top:-120px;opacity:0;transition:1.1s cubic-bezier(.3,1.5,.5,1)}
+.king.crowned .crown{top:-14px;opacity:1}
+.king.crowned .stk{animation:bob 2s infinite}
+#kingMsg{display:none;font-family:"Playfair Display",serif;font-size:1.5rem;color:var(--green);margin-top:18px}
+.future{max-width:none;background:linear-gradient(145deg,#334a3f,#24352e);color:#fff}
+.future h2{color:#fff}.future .eyebrow{color:#c8d4c4}
+.cd{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:26px 0}
+.cd div{border:1px solid #ffffff35;border-radius:14px;padding:14px 20px;min-width:90px;background:#ffffff0d}
+.cd b{display:block;font-family:"Playfair Display",serif;font-size:2.4rem}
+.cd small{letter-spacing:.15em;text-transform:uppercase;color:#c8d4c4;font-size:.65rem}
+.tags{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.tags span{padding:9px 16px;border:1px solid #ffffff35;border-radius:30px;color:#dfe7dc;font-size:.9rem;animation:bob 3s infinite}
+.tags span:nth-child(even){animation-delay:.8s}
+.final h2{font-size:clamp(3rem,8vw,6.5rem);margin:0}
+.final h2 i{color:var(--rose);font-weight:500}
+#secret{display:none;max-width:540px;margin:24px auto 0;padding:22px;background:#fff;border:2px dashed #ecc4c8;border-radius:18px;animation:pop .6s}
+footer{text-align:center;padding:30px;color:#8a7f7f;font-size:.8rem;border-top:1px solid #eadbd5}
+.fl,.heart,.spark,.conf{position:fixed;pointer-events:none;z-index:40}
+.fl{bottom:-40px;color:var(--rose);opacity:.5;animation:rise linear forwards}
+.heart{font-size:22px;color:var(--rose);z-index:50;animation:fly 1.8s ease-out forwards}
+.spark{z-index:60;font-size:14px;color:var(--gold);animation:fade .8s forwards}
+.conf{top:-20px;z-index:60;animation:fall 2.8s linear forwards}
+@keyframes bob{50%{transform:translateY(-10px) rotate(3deg)}}
+@keyframes beat{50%{transform:scale(1.25)}}
+@keyframes pulse{50%{box-shadow:0 0 0 14px #31483d14}}
+@keyframes pop{from{transform:scale(.6);opacity:0}}
+@keyframes rise{to{transform:translateY(-110vh) rotate(40deg);opacity:0}}
+@keyframes fly{to{transform:translate(var(--x),-260px) rotate(var(--r));opacity:0}}
+@keyframes fade{to{transform:translateY(-24px) scale(.3);opacity:0}}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.section{padding:70px 6vw}.stk{width:90px;height:90px}.card .stk{width:56px;height:56px}}
+</style>
+</head>
+<body>
+
+<!-- Original cute bear (Bubu) & panda (Dudu) stickers. To use your own sticker PNGs, replace an <svg class="stk"> with <img class="stk" src="bubu.png"> -->
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="bubu" viewBox="0 0 100 100">
+ <circle cx="24" cy="24" r="14" fill="#b98a62"/><circle cx="76" cy="24" r="14" fill="#b98a62"/><circle cx="24" cy="24" r="7" fill="#f3c9a8"/><circle cx="76" cy="24" r="7" fill="#f3c9a8"/>
+ <circle cx="50" cy="54" r="36" fill="#c99a70"/><ellipse cx="50" cy="66" rx="16" ry="12" fill="#f3d9bd"/>
+ <circle cx="37" cy="50" r="4" fill="#3b2a22"/><circle cx="63" cy="50" r="4" fill="#3b2a22"/><circle cx="38.5" cy="48.5" r="1.3" fill="#fff"/><circle cx="64.5" cy="48.5" r="1.3" fill="#fff"/>
+ <ellipse cx="50" cy="61" rx="5" ry="3.5" fill="#3b2a22"/><path d="M44 68q6 6 12 0" stroke="#3b2a22" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+ <circle cx="27" cy="62" r="6" fill="#f2a1a8" opacity=".7"/><circle cx="73" cy="62" r="6" fill="#f2a1a8" opacity=".7"/>
+</symbol>
+<symbol id="dudu" viewBox="0 0 100 100">
+ <circle cx="22" cy="24" r="14" fill="#2d2d33"/><circle cx="78" cy="24" r="14" fill="#2d2d33"/>
+ <circle cx="50" cy="54" r="36" fill="#fff" stroke="#e5e0e0" stroke-width="2"/>
+ <ellipse cx="36" cy="50" rx="9" ry="11" fill="#2d2d33" transform="rotate(20 36 50)"/><ellipse cx="64" cy="50" rx="9" ry="11" fill="#2d2d33" transform="rotate(-20 64 50)"/>
+ <circle cx="37" cy="49" r="3.5" fill="#fff"/><circle cx="63" cy="49" r="3.5" fill="#fff"/>
+ <ellipse cx="50" cy="62" rx="4.5" ry="3" fill="#2d2d33"/><path d="M44 68q6 6 12 0" stroke="#2d2d33" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+ <circle cx="26" cy="64" r="6" fill="#f2a1a8" opacity=".7"/><circle cx="74" cy="64" r="6" fill="#f2a1a8" opacity=".7"/>
+ <path d="M70 80q8-10 18 0q-9 14-18 0z" fill="#e8737f"/>
+</symbol>
+<symbol id="crown" viewBox="0 0 100 70">
+ <path d="M8 60 L4 16 L28 36 L50 6 L72 36 L96 16 L92 60 Z" fill="#f2c14e" stroke="#c9902a" stroke-width="3" stroke-linejoin="round"/>
+ <rect x="8" y="52" width="84" height="10" rx="3" fill="#e0a73a"/>
+ <circle cx="4" cy="14" r="5" fill="#e8737f"/><circle cx="50" cy="6" r="5.5" fill="#6aa7e0"/><circle cx="96" cy="14" r="5" fill="#e8737f"/>
+ <circle cx="30" cy="57" r="3" fill="#fff"/><circle cx="50" cy="57" r="3" fill="#fff"/><circle cx="70" cy="57" r="3" fill="#fff"/>
+</symbol></defs></svg>
+
+<header class="hero"><div>
+  <div class="pair">
+    <svg class="stk"><use href="#bubu"/></svg><svg class="stk"><use href="#dudu"/></svg>
+  </div>
+  <p class="eyebrow">Happy Boyfriend's Day · made just for you</p>
+  <h1>Hey Bubu<span>♥</span></h1>
+  <p class="t" id="typed"></p>
+  <button class="btn pulse" onclick="document.getElementById('letter').scrollIntoView()">Come inside ♡</button>
+</div></header>
+
+<section id="letter" class="section rv">
+  <p class="script">a little letter</p>
+  <h2>To my favourite person</h2>
+  <div class="letter">
+    <svg class="stk corner"><use href="#dudu"/></svg>
+    <p>Dear Bubu,</p>
+    <p>Whenever I cry, somehow you make sure I end up laughing out loud. Honestly, that's one of my favourite things about you.</p>
+    <p>This website isn't about one big day. It's about <em>us, right now</em> — the silly moments, the comfort, the wedding plans, and all the tiny memories becoming our life.</p>
+    <p>You're my person, my peace, and my favourite notification. 💌</p>
+    <p class="sign">Your Gauri ♡</p>
+  </div>
+</section>
+
+<section class="section band rv" style="max-width:none">
+  <p class="script">us, lately</p>
+  <h2>Little pieces of our life</h2>
+  <!-- Photos: put images in this folder and swap each placeholder for <img src="photo1.jpg" alt=""> -->
+  <div class="grid">
+    <article class="card"><svg class="stk"><use href="#bubu"/></svg><div class="photo"><img src="photo1.jpg" alt=""></div><h3>The moments that make me laugh</h3><p>Random jokes, teasing, and a bad mood turning into a full laughing session.</p></article>
+    <article class="card"><svg class="stk"><use href="#dudu"/></svg><div class="photo"><img src="photo2.jpg" alt=""></div><h3>My safe little laugh</h3><p>Me: crying. You: absolutely not allowing it to stay sad. </p></article>
+    <article class="card"><svg class="stk"><use href="#dudu"/></svg><div class="photo"><img src="photo3.jpg" alt=""></div><h3>The ordinary days</h3><p>Days that look boring from outside but become my favourite because you're there.</p></article>
+    <article class="card"><svg class="stk"><use href="#bubu"/></svg><div class="photo"><img src="photo4.png" alt=""></div><h3>Our wedding era 💍</h3><p>Planning tiny details and imagining our home after 11 March 2027.😂</p></article>
+  </div>
+</section>
+
+<section class="section rv">
+  <p class="script">tap to open</p>
+  <h2>Things I love about you</h2>
+  <div class="grid">
+    <button class="reason" onclick="this.classList.toggle('open');hearts()"><b>When I'm upset…</b><em>You somehow make me laugh.</em></button>
+    <button class="reason" onclick="this.classList.toggle('open');hearts()"><b>When life gets overwhelming…</b><em>You make it feel a little lighter.</em></button>
+    <button class="reason" onclick="this.classList.toggle('open');hearts()"><b>When I imagine the future…</b><em>I automatically imagine you in it.</em></button>
+    <button class="reason" onclick="this.classList.toggle('open');hearts()"><b>And most importantly…</b><em>You feel like home.</em></button>
+  </div>
+</section>
+
+<section class="section rv" style="max-width:none;background:#fff8f6">
+  <p class="script">important question</p>
+  <h2>Serious quiz time</h2>
+  <div class="q-box" id="qbox">
+    <div class="pair"><svg class="stk"><use href="#dudu"/></svg></div>
+    <h3>Do you love Gauri?</h3>
+    <div class="btns">
+      <button class="btn" onclick="yes()">Yes 💚</button>
+      <button class="btn" id="no" onmouseover="dodge()" ontouchstart="dodge()" onclick="dodge()">No</button>
+    </div>
+    <p id="yesMsg">Correct answer! Prize: unlimited hugs from me. 🤍</p>
+  </div>
+</section>
+
+<section class="section throne rv">
+  <p class="script">the royal moment</p>
+  <h2>Crown the King 👑</h2>
+  <p>Tap Bubu to give him his crown.</p>
+  <div class="king" id="king" onclick="crown()">
+    <svg class="crown"><use href="#crown"/></svg>
+    <svg class="stk"><use href="#bubu"/></svg>
+  </div>
+  <p id="kingMsg">Long live the King of my heart. 👑<br><small style="font-size:1rem;color:var(--muted)">Queen Gauri officially approves this coronation.</small></p>
+</section>
+
+<section class="section future rv" style="max-width:none">
+  <p class="eyebrow">Coming soon</p>
+  <h2>Our next chapter</h2>
+  <p>11 March 2027 — bas thoda sa time aur…</p>
+  <div class="cd" id="cd"></div>
+  <div class="tags"><span>🏠 Our home</span><span>☕ Lazy mornings</span><span>😂 Laughing over nothing</span><span>🌿 Growing together</span><span>📸 More memories</span></div>
+</section>
+
+<section class="section final rv">
+  <div class="pair"><svg class="stk"><use href="#bubu"/></svg><svg class="stk"><use href="#dudu"/></svg></div>
+  <h2>I would choose you<br><i>again.</i></h2>
+  <p style="color:var(--muted)">And then again. And again. And again.</p>
+  <button class="btn" onclick="secret()">One last thing ↓</button>
+  <div id="secret">Bubu, thank you for being the person who makes me laugh when I feel like crying. You'll always be my king. I hope we never lose our silly little moments. ♡</div>
+</section>
+
+<footer>Made with too much love by Gauri for Bubu ♡</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+// typewriter
+const msg="Normal message se kaam nahi chal raha tha, isliye ye bana diya. 😌";let ti=0;
+(function type(){ if(ti<=msg.length){$('typed').textContent=msg.slice(0,ti++);setTimeout(type,45)} })();
+// floating hearts background
+setInterval(()=>{const f=document.createElement('span');f.className='fl';f.textContent=['♡','♥','✿'][Math.floor(Math.random()*3)];f.style.left=Math.random()*100+'vw';f.style.fontSize=(14+Math.random()*20)+'px';f.style.animationDuration=(7+Math.random()*6)+'s';document.body.appendChild(f);setTimeout(()=>f.remove(),13000)},700);
+// sparkle trail
+function spark(x,y){const s=document.createElement('span');s.className='spark';s.textContent='✦';s.style.left=x+'px';s.style.top=y+'px';document.body.appendChild(s);setTimeout(()=>s.remove(),800)}
+addEventListener('mousemove',e=>{if(Math.random()<.3)spark(e.clientX,e.clientY)});
+addEventListener('touchmove',e=>{const t=e.touches[0];spark(t.clientX,t.clientY)},{passive:true});
+// scroll reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+// hearts burst
+function hearts(){for(let i=0;i<18;i++){const h=document.createElement('span');h.className='heart';h.textContent=['♡','♥','✦'][i%3];h.style.left=(40+Math.random()*20)+'%';h.style.top=(60+Math.random()*15)+'%';h.style.setProperty('--x',(Math.random()*240-120)+'px');h.style.setProperty('--r',(Math.random()*90-45)+'deg');document.body.appendChild(h);setTimeout(()=>h.remove(),1800)}}
+function confetti(){const c=['#e7b84a','#d98f9a','#93a98e','#6aa7e0','#fff'];for(let i=0;i<60;i++){const p=document.createElement('span');p.className='conf';p.style.left=Math.random()*100+'vw';p.style.width='8px';p.style.height='14px';p.style.background=c[i%5];p.style.animationDelay=Math.random()*.8+'s';document.body.appendChild(p);setTimeout(()=>p.remove(),4000)}}
+function secret(){$('secret').style.display='block';hearts()}
+function yes(){$('yesMsg').style.display='block';$('no').style.display='none';hearts()}
+function dodge(){const n=$('no'),b=$('qbox');n.style.position='absolute';n.style.left=Math.random()*(b.clientWidth-90)+'px';n.style.top=(200+Math.random()*110)+'px'}
+function crown(){const k=$('king');if(k.classList.contains('crowned'))return;k.classList.add('crowned');$('kingMsg').style.display='block';confetti();hearts()}
+function tick(){const t=Math.max(0,new Date('2027-03-11T00:00:00')-new Date());const v=[['Days',Math.floor(t/864e5)],['Hours',Math.floor(t/36e5)%24],['Mins',Math.floor(t/6e4)%60],['Secs',Math.floor(t/1e3)%60]];$('cd').innerHTML=v.map(x=>`<div><b>${x[1]}</b><small>${x[0]}</small></div>`).join('')}
+tick();setInterval(tick,1000);
+</script>
+</body>
+</html>
